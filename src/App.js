@@ -1,6 +1,7 @@
 import './App.css';
 import PlayersPage from './components/PlayersPage';
 import { Route, Switch, Link } from 'react-router-dom';
+import GamesPage from './components/GamesPage';
 
 
 function App() {
@@ -13,6 +14,9 @@ function App() {
           <PlayersPage />
         </Route>
 
+        <Route path="/players/:id">
+          <GamesPage />
+        </Route>
       </Switch>
     </div>
   );
