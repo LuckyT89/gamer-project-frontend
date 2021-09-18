@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import PlayerCard from './PlayerCard';
 
 function PlayersPage() {
 
@@ -12,13 +13,16 @@ function PlayersPage() {
             .then(res => res.json())
             .then(resPlayers => {
             setPlayers(resPlayers);
-            console.log(resPlayers);
             })
         }, []);
 
+    // Map over the array of player objects and make a PlayerCard component for each one.
+    const playerCards = players.map((player) => <PlayerCard key={player.id} player={player} />);
+
     return (
         <div>
-            Gamers Page
+            Players Page
+            { playerCards }
         </div>
     );
 }
