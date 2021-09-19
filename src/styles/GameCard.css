@@ -1,6 +1,9 @@
 div.game-card {
     border: 2px solid black;
-    margin: 20px auto;
+    border-radius: 10px;
+    margin: 30px auto;
     padding: 20px;
     width: 30%;
+
+    background-color: lightgray;
 }
