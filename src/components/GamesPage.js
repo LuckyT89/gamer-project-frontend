@@ -25,7 +25,7 @@ function GamesPage() {
     }, [playerId]); // React console warning wanted teamId in the dependency array here even though it worked without it. 
 
     // Map over the array of player objects stored in state and make a GameCard component for each one.
-    const gameCards = playerGames.map((game) => <GameCard key={game.id} game={game} removeGame={removeGame} />);
+    const gameCards = playerGames.map((game) => <GameCard key={game.id} game={game} removeGame={removeGame} toggleActive={toggleActive} />);
 
 
 
@@ -93,16 +93,41 @@ function GamesPage() {
 
     // Remove a PlayerGame from the database when a Remove button is clicked and update the screen to remove the game. 
     function removeGame(id) {
-        console.log('button clicked');
-        console.log(id);
         fetch(`${baseURL}/player_games/${id}`, {method: 'DELETE'})
             .then(res => res.json())
             .then(() => setPlayerGames(playerGames.filter(playerGame => playerGame.id !== id)))
     }
 
 
-    function toggleActive() {
+    // Switch the active status of a game when the Currently playing checkbox is clicked. 
+    function toggleActive(updatedPlayerGame) {
         console.log('checkbox toggled');
+        console.log(updatedPlayerGame);
+
+        const config = {
+            method: 'PATCH',
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify(updatedPlayerGame)
+        }
+
+        fetch(`${baseURL}/player_games/${updatedPlayerGame.id}`, config)
+            .then(res => res.json())
+            .then((newPlayerGame) => {
+                // Create a new variable with a list of all PlayerGames, updating the one that just 
+                // had the active status toggled. 
+                const updatedGames = games.map((game) => {
+                if (game.id === newPlayerGame.id) {
+                    return newPlayerGame;
+                }
+                else {
+                    return game;
+                }
+                });
+
+                setGames(updatedGames);
+            })
     }
 
     return (
