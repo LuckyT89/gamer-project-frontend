@@ -1,6 +1,6 @@
 import './App.css';
 import PlayersPage from './components/PlayersPage';
-import { Route, Switch, Link } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import GamesPage from './components/GamesPage';
 
 
