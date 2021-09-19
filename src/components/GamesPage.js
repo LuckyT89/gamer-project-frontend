@@ -25,7 +25,7 @@ function GamesPage() {
     }, [playerId]); // React console warning wanted teamId in the dependency array here even though it worked without it. 
 
     // Map over the array of player objects stored in state and make a GameCard component for each one.
-    const gameCards = playerGames.map((game) => <GameCard key={game.id} game={game} />);
+    const gameCards = playerGames.map((game) => <GameCard key={game.id} game={game} removeGame={removeGame} />);
 
 
 
@@ -88,6 +88,21 @@ function GamesPage() {
                 player.game = selectedGameObject;
                 setPlayerGames([...playerGames, player]);
             })  
+    }
+
+
+    // Remove a PlayerGame from the database when a Remove button is clicked and update the screen to remove the game. 
+    function removeGame(id) {
+        console.log('button clicked');
+        console.log(id);
+        fetch(`${baseURL}/player_games/${id}`, {method: 'DELETE'})
+            .then(res => res.json())
+            .then(() => setPlayerGames(playerGames.filter(playerGame => playerGame.id !== id)))
+    }
+
+
+    function toggleActive() {
+        console.log('checkbox toggled');
     }
 
     return (
