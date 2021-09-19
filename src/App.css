@@ -36,3 +36,15 @@
     transform: rotate(360deg);
   }
 }
+
+
+
+/* My styles below */
+div.header {
+  border: 1px solid orange;
+  font-size: 42px;
+  height: 200px;
+  line-height: 70px;
+  background-color: orange;
+  color: white;
+}
