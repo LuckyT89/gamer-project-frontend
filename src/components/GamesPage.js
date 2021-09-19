@@ -133,8 +133,6 @@ function GamesPage() {
 
     return (
         <div>
-            Games Page
-            
             <select name="games" onChange={handleGameChange}>
                 <option>Add game</option>
                 {gamesList}

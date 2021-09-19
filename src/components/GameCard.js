@@ -24,7 +24,7 @@ function GameCard({ game, removeGame, toggleActive }) {
 
     return (
         <div className="game-card">
-            <img src={game.game.image_url} />
+            <img alt="game logo" src={game.game.image_url} />
             <h3>{game.game.name}</h3>
             <button onClick={handleRemoveGame}>Remove</button><br />
             Currently playing <input type="checkbox" checked={activeStatus ? "checked" : ""} onChange={handleToggleActive}></input>

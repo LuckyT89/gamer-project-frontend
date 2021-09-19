@@ -22,7 +22,7 @@ function PlayersPage() {
 
     return (
         <div>
-            Players Page
+            Select a player to see which games they play
             { playerCards }
         </div>
     );
