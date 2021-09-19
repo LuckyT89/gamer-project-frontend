@@ -3,8 +3,8 @@ import PlayerCard from './PlayerCard';
 
 function PlayersPage() {
 
-    const baseURL = 'http://127.0.0.1:3000';
-    // const baseURL = 'https://gamer-project-backend.herokuapp.com/';
+    // const baseURL = 'http://127.0.0.1:3000';
+    const baseURL = 'https://gamer-project-backend.herokuapp.com/';
 
     const [players, setPlayers] = useState([]);
 
